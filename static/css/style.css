@@ -1,0 +1,154 @@
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: #16213e;
+    border-bottom: 2px solid #0f3460;
+}
+
+.navbar-brand {
+    color: #e94560 !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 2px solid #e94560;
+}
+
+.hero h1 {
+    color: #e94560;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero p {
+    color: #a0a0b0;
+    font-size: 1.1rem;
+}
+
+.card {
+    background-color: #16213e;
+    border: 1px solid #0f3460;
+    border-radius: 12px;
+}
+
+.card-header {
+    background-color: #0f3460;
+    border-bottom: 1px solid #e94560;
+    color: #e94560;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.form-control, .form-select {
+    background-color: #1a1a2e;
+    border: 1px solid #0f3460;
+    color: #e0e0e0;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #1a1a2e;
+    border-color: #e94560;
+    color: #e0e0e0;
+    box-shadow: 0 0 0 0.2rem rgba(233, 69, 96, 0.25);
+}
+
+.form-control::placeholder {
+    color: #606080;
+}
+
+.btn-primary {
+    background-color: #e94560;
+    border-color: #e94560;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #c73652;
+    border-color: #c73652;
+}
+
+.btn-outline-primary {
+    border-color: #e94560;
+    color: #e94560;
+}
+
+.btn-outline-primary:hover {
+    background-color: #e94560;
+    color: white;
+}
+
+.result-box {
+    background-color: #0f3460;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    display: none;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a2e;
+}
+
+.spec-label {
+    color: #a0a0b0;
+    font-size: 0.9rem;
+}
+
+.spec-value {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.phone-title {
+    color: #e94560;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.vs-badge {
+    background-color: #e94560;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+footer {
+    background-color: #16213e;
+    border-top: 2px solid #0f3460;
+    padding: 20px 0;
+    text-align: center;
+    color: #606080;
+    margin-top: 60px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 2px solid #0f3460;
+    color: #a0a0b0;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background-color: #e94560;
+    border-color: #e94560;
+    color: white;
+}
