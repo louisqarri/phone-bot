@@ -11,7 +11,8 @@ class ChatBrain():
             phone_obj = ChatData(
                 phone["brand"],
                 phone["model"],
-                phone["release_year"], phone["display_type"],
+                phone["release_year"],
+                phone["display_type"],
                 phone["storage_options_gb"],
                 phone["main_camera_mp"],
                 phone["ultra_wide_camera_mp"],
