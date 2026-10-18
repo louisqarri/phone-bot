@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specs - PhoneBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/">📱 PhoneBot</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Title -->
+        <div class="hero">
+            <h1>🔍 Phone Specs</h1>
+            <p>Pick a phone and see its full specifications</p>
+        </div>
+
+        <!-- Form -->
+        <div class="card">
+            <div class="card-body">
+                <form action="/specs" method="post">
+                    <label for="model">Phone Model</label>
+                    <select name="model" id="model">
+                        <!-- PLACEHOLDER: options come from the phones list -->
+                        {% for phone in phones %}
+                        <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Show Specs</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <!-- PLACEHOLDER: the specs text appears here after clicking Show Specs -->
+        {% if result %}
+        <div class="card result">
+            <div class="card-body">{{ result }}</div>
+        </div>
+        {% endif %}
+
+        <a class="back-link" href="/">← Back to home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>📱 PhoneBot - Built with Python & Flask</p>
+    </footer>
+
+</body>
+</html>

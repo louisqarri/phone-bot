@@ -1,5 +1,4 @@
 import json
-from chat_data import ChatData
 from chat_brain import ChatBrain
 brain = ChatBrain()
 

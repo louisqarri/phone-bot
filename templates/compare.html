@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare - PhoneBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/">📱 PhoneBot</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Title -->
+        <div class="hero">
+            <h1>⚡ Compare Two Phones</h1>
+            <p>Pick two phones and see them side by side</p>
+        </div>
+
+        <!-- Form -->
+        <div class="card">
+            <div class="card-body">
+                <form action="/compare" method="post">
+                    <div class="row">
+                        <div>
+                            <label for="model_one">First Phone</label>
+                            <select name="model_one" id="model_one">
+                                <!-- PLACEHOLDER: options come from the phones list -->
+                                {% for phone in phones %}
+                                <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <span class="vs">VS</span>
+
+                        <div>
+                            <label for="model_two">Second Phone</label>
+                            <select name="model_two" id="model_two">
+                                <!-- PLACEHOLDER: same options -->
+                                {% for phone in phones %}
+                                <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit">Compare Now</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <!-- PLACEHOLDER: the comparison text appears here after clicking Compare -->
+        {% if result %}
+        <div class="card result">
+            <div class="card-body">{{ result }}</div>
+        </div>
+        {% endif %}
+
+        <a class="back-link" href="/">← Back to home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>📱 PhoneBot - Built with Python & Flask</p>
+    </footer>
+
+</body>
+</html>
