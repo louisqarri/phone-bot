@@ -1,29 +1,12 @@
-from chat_data import ChatData
+from database import Phone, engine
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 import json
-
-with open("data/smartphones.json") as smartphones:
-    smartphones_data = json.load(smartphones)
 
 class ChatBrain():
     def __init__(self):
-        self.all_phones = []
-        for phone in smartphones_data["smartphones"]:
-            phone_obj = ChatData(
-                phone["brand"],
-                phone["model"],
-                phone["release_year"],
-                phone["display_type"],
-                phone["storage_options_gb"],
-                phone["main_camera_mp"],
-                phone["ultra_wide_camera_mp"],
-                phone["telephoto_camera_mp"],
-                phone["front_camera_mp"],
-                phone["battery_mah"],
-                phone["chipset"],
-                phone["notes"]
-                )
-            self.all_phones.append(phone_obj)
-        self.waiting_for = "command"
+        with Session(engine) as session:
+            self.all_phones = session.execute(select(Phone)).scalars().all()
 
     def find_phone(self, name):
         for phone in self.all_phones:
