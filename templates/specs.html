@@ -10,7 +10,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="/">📱 PhoneBot</a>
+        <a href="{{ url_for('home')}}">📱 PhoneBot</a>
     </nav>
 
     <div class="container">
@@ -24,12 +24,12 @@
         <!-- Form -->
         <div class="card">
             <div class="card-body">
-                <form action="/specs" method="post">
+                <form action="{{ url_for('specs') }}" method="post">
                     <label for="model">Phone Model</label>
                     <select name="model" id="model">
-                        <!-- PLACEHOLDER: options come from the phones list -->
                         {% for phone in phones %}
-                        <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                        <option value="{{ phone.model }}">
+                            {{ phone.brand }} {{ phone.model }}</option>
                         {% endfor %}
                     </select>
                     <button type="submit">Show Specs</button>
@@ -38,14 +38,13 @@
         </div>
 
         <!-- Result -->
-        <!-- PLACEHOLDER: the specs text appears here after clicking Show Specs -->
         {% if result %}
         <div class="card result">
             <div class="card-body">{{ result }}</div>
         </div>
         {% endif %}
 
-        <a class="back-link" href="/">← Back to home</a>
+        <a class="back-link" href="{{ url_for('home')}}">← Back to home</a>
     </div>
 
     <!-- Footer -->

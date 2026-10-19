@@ -1,6 +1,5 @@
-import json
-from chat_brain import ChatBrain
-brain = ChatBrain()
+from brain import Brain
+brain = Brain()
 
 user_answer = input("Hello. How can I help you today?\n").lower()
 

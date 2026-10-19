@@ -11,8 +11,8 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="/">📱 PhoneBot</a>
-        <a href="/">README</a>
+        <a href="{{ url_for('home')}}">📱 PhoneBot</a>
+        <a href="{{ url_for('readme')}}">README</a>
     </nav>
 
     <!-- Hero + 2 buttons -->
@@ -23,8 +23,8 @@
         </div>
 
         <div class="buttons">
-            <a class="button" href="/compare">⚡ Compare Two Phones</a>
-            <a class="button" href="/specs">🔍 Show Phone Specs</a>
+            <a class="button" href="{{ url_for('compare')}}">⚡ Compare Two Phones</a>
+            <a class="button" href="{{ url_for('specs')}}">🔍 Show Phone Specs</a>
         </div>
     </div>
 

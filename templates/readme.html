@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>README - PhoneBot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="/">📱 PhoneBot</a>
+        <a href="{{ url_for('home')}}">📱 PhoneBot</a>
     </nav>
 
     <div class="container">
@@ -23,14 +25,32 @@
         <!-- The text -->
         <div class="card">
             <div class="card-body readme-text">
-                <p>PLACEHOLDER: your explanation goes here.</p>
-                <p>PLACEHOLDER: a second paragraph, if you need one.</p>
+                <p><strong>PhoneBot</strong> is a small web page where you can look up the specifications of a
+                    smartphone, or compare two phones side by side. Pick the phone or phones from the lists, press the
+                    button, and the result appears on the page.</p>
+
+                <p><strong>What it shows:</strong> release year, display, battery, cameras, storage, chipset and a short
+                    note for each phone.</p>
+
+                <p><strong>Please note:</strong> the data is <strong>not up to date</strong>. It was collected
+                    for a limited list of phones, and prices, models and specs can change. Use it for fun, not for
+                    buying decisions.</p>
+
+                <p><strong>About the project:</strong> PhoneBot is a personal learning project. It is not connected to
+                    any phone brand or store.</p>
+
+                <p><strong>Built with:</strong></p>
+                <ul>
+                    <li>Python</li>
+                    <li>Flask (the web part)</li>
+                    <li>SQLite with SQLAlchemy (the database)</li>
+                </ul>
             </div>
         </div>
 
         <!-- Try now button -->
         <div class="buttons">
-            <a class="button" href="/">Try now →</a>
+            <a class="button" href="{{ url_for('home')}}">Try now →</a>
         </div>
 
     </div>
@@ -41,4 +61,5 @@
     </footer>
 
 </body>
+
 </html>

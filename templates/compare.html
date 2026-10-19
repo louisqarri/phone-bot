@@ -10,7 +10,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="/">📱 PhoneBot</a>
+        <a href="{{ url_for('home')}}">📱 PhoneBot</a>
     </nav>
 
     <div class="container">
@@ -24,14 +24,14 @@
         <!-- Form -->
         <div class="card">
             <div class="card-body">
-                <form action="/compare" method="post">
+                <form action="{{ url_for('compare') }}" method="post">
                     <div class="row">
                         <div>
                             <label for="model_one">First Phone</label>
                             <select name="model_one" id="model_one">
-                                <!-- PLACEHOLDER: options come from the phones list -->
                                 {% for phone in phones %}
-                                <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                                <option value="{{ phone.model }}">
+                                    {{ phone.brand }} {{ phone.model }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -41,9 +41,9 @@
                         <div>
                             <label for="model_two">Second Phone</label>
                             <select name="model_two" id="model_two">
-                                <!-- PLACEHOLDER: same options -->
                                 {% for phone in phones %}
-                                <option value="{{ phone.model }}">{{ phone.brand }} {{ phone.model }}</option>
+                                <option value="{{ phone.model }}">
+                                    {{ phone.brand }} {{ phone.model }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -54,14 +54,13 @@
         </div>
 
         <!-- Result -->
-        <!-- PLACEHOLDER: the comparison text appears here after clicking Compare -->
         {% if result %}
         <div class="card result">
             <div class="card-body">{{ result }}</div>
         </div>
         {% endif %}
 
-        <a class="back-link" href="/">← Back to home</a>
+        <a class="back-link" href="{{ url_for('home')}}">← Back to home</a>
     </div>
 
     <!-- Footer -->
