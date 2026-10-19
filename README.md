@@ -1,25 +1,34 @@
-# 📱 PhoneBot
+# 📱 PhoneBot: a small data pipeline project
 
-A small web app to look up the specifications of a smartphone, or to compare two phones side by side.
+A small end-to-end data pipeline in Python: data goes from a **JSON file** into a **SQLite database**, and from the database to a **web page**. The phone data is only a simple sample dataset to carry through the pipeline.
 
-Pick the phone(s) from a dropdown, press the button, and the result appears on the page.
+> Personal learning project. The sample data is limited and **not up to date**. It's not connected to any phone brand or store.
 
-> Personal learning project. The data is **not up to date** and not connected to any phone brand or store.
+## Data flow
 
-## Features
+```
+data/smartphones.json  →  load_data.py  →  SQLite database  →  Brain  →  Flask web page
+      (source)             (load)            (storage)         (read)       (presentation)
+```
 
-- **Show specs** of a single phone
-- **Compare** two phones
-- Phone data stored in a **SQLite database**
-- Simple, minimal web interface (HTML and CSS, no JavaScript)
-- A terminal version of the same bot (`main.py`)
+1. **Source:** `data/smartphones.json` holds the sample phones.
+2. **Load:** `load_data.py` reads the JSON and inserts each phone into SQLite with SQLAlchemy. It skips phones that are already in the database, so it is **safe to run more than once**.
+3. **Storage:** the `Phone` table is defined once in `database.py` and shared by the other files.
+4. **Read:** the `Brain` class loads the phones from the database and can find a phone, show its specs, or compare two phones.
+5. **Present:** `app.py` connects the `Brain` to the Flask pages (home, specs, compare, readme). A terminal version of the same logic is in `main.py`.
+
+## What it does
+
+- Shows the specs of one phone
+- Compares two phones
+- Picks the phones from dropdown lists, so there are no typing mistakes
 
 ## Built with
 
 - Python
-- Flask
 - SQLAlchemy and SQLite
-- HTML and CSS (Jinja templates)
+- Flask and Jinja templates
+- HTML and CSS (no JavaScript)
 
 ## How to run it
 
@@ -33,44 +42,46 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Create the database and load the phones from the JSON file
+# 3. Create the database and load the data from the JSON file
 python3 load_data.py
 
 # 4. Start the web app
 python3 app.py
 ```
 
-Then open http://127.0.0.1:5000 in your browser.
+Open http://127.0.0.1:5000 in your browser. For the terminal version: `python3 main.py`.
 
-To use the terminal version instead: `python3 main.py`
+Run the commands from the project folder, because the database path is relative.
 
 ## Project structure
 
 ```
 phone-bot/
-├── app.py               # Flask app: the pages (home, compare, specs, readme)
-├── brain.py             # Brain class: finds phones and builds the answers
-├── database.py          # The Phone table (SQLAlchemy) and the database connection
-├── load_data.py         # One-time script: JSON -> SQLite database
-├── main.py              # Terminal version of the bot
+├── app.py               # Flask app: pages and routes
+├── brain.py             # Brain class: reads the database, builds the answers
+├── database.py          # Phone table (SQLAlchemy) and the database connection
+├── load_data.py         # JSON -> SQLite loader (safe to re-run)
+├── main.py              # Terminal version
 ├── data/
-│   └── smartphones.json # The phone data
+│   └── smartphones.json # Source data
 ├── templates/           # HTML pages
 ├── static/css/          # Stylesheet
 ├── requirements.txt
 └── README.md
 ```
 
-## How it works
+## Design choices
 
-1. `load_data.py` reads `data/smartphones.json` and stores every phone in the SQLite database (it skips phones that are already there).
-2. `Brain` loads the phones from the database and can find a phone by model name, show its specs, or compare two phones.
-3. `app.py` connects `Brain` to the web pages: the form sends the chosen model(s), and the result is shown on the same page.
+- **Definitions and actions are separated.** `database.py` only defines the table and the connection, so importing it never changes anything. Loading data is a separate script you run on purpose.
+- **The logic lives in one class.** The terminal version and the web version use the same `Brain`.
+- **The app reads only from the database**, never from the JSON file.
 
-## About the data
+## Limitations
 
-The phone list is limited and **not kept up to date**. Prices, models and specs may be outdated. Use it for fun, not for buying decisions.
+- Small sample dataset, not kept up to date
+- No tests yet
+- Some phones have no ultra wide or telephoto camera, and those fields show as empty values
 
 ## About
 
-Built by Louis as a personal Python learning project.
+Built by Louis as a personal Python learning project, to practise the extract, load and present steps of a data pipeline.
