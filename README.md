@@ -71,12 +71,6 @@ phone-bot/
 
 The phone list is limited and **not kept up to date**. Prices, models and specs may be outdated. Use it for fun, not for buying decisions.
 
-## Ideas for the future
-
-- More phones and more specs
-- A form to add or edit phones
-- Filter and sort phones by brand or price
-
 ## About
 
 Built by Louis as a personal Python learning project.
